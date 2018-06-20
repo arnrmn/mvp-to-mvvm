@@ -4,7 +4,7 @@ import arnrmn.mvp.utils.entity.Article
 import arnrmn.mvp.utils.presenter.BasePresenter
 import io.reactivex.Single
 
-interface NewsContract {
+interface NewsListContract {
     interface View {
         fun showArticles(articles: List<Article>)
 

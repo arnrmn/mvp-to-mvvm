@@ -7,9 +7,9 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class NewsListPresenter @Inject constructor(
-        private val model: NewsContract.Model,
+        private val model: NewsListContract.Model,
         @UI private val scheduler: Scheduler
-) : NewsContract.Presenter, ViewPresenter<NewsContract.View>() {
+) : NewsListContract.Presenter, ViewPresenter<NewsListContract.View>() {
 
     override fun onViewReady() {
         model.loadArticles()

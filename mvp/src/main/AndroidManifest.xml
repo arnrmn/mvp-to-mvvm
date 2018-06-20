@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="arnrmn.mvp.newslist.NewsListActivity">
+        <activity
+            android:name="arnrmn.mvp.newslist.NewsListActivity"
+            android:configChanges="screenSize|orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

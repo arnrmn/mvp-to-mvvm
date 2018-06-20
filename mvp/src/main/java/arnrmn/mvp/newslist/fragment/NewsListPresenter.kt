@@ -40,6 +40,9 @@ class NewsListPresenter @Inject constructor(
     private fun <T> Single<T>.onResult(action: (T) -> Unit) {
         disposables.add(
                 this.observeOn(scheduler)
+                        .doOnSubscribe { onView { showProgress() } }
+                        .doOnSuccess { onView { hideProgress() } }
+                        .doOnError { onView { hideProgress() } }
                         .subscribe(
                                 action::invoke,
                                 this@NewsListPresenter::handleError

@@ -11,6 +11,10 @@ interface NewsListContract {
         fun showNoArticles()
 
         fun showMessage(message: String)
+
+        fun showProgress()
+
+        fun hideProgress()
     }
 
     interface Presenter : BasePresenter<View> {

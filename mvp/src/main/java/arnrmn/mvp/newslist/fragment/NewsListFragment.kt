@@ -40,6 +40,14 @@ class NewsListFragment : BaseFragment(), NewsListContract.View {
         //Do nothing
     }
 
+    override fun showProgress() {
+        progressbar.visibility = View.VISIBLE
+    }
+
+    override fun hideProgress() {
+        progressbar.visibility = View.GONE
+    }
+
     override fun showMessage(message: String) {
         view?.let { view -> Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show() }
     }

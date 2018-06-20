@@ -2,7 +2,7 @@ package arnrmn.mvp.utils.android
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
-import arnrmn.mvp_mvvm.R
+import arnrmn.mvp.R
 
 fun FragmentActivity.replaceFragment(
         fragment: Fragment,

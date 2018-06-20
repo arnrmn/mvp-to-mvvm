@@ -1,5 +1,6 @@
 package arnrmn.mvp.newslist.fragment
 
+import arnrmn.mvp.utils.entity.Article
 import arnrmn.mvp.utils.presenter.ViewPresenter
 import dk.tv2.onboarding.UI
 import io.reactivex.Scheduler
@@ -15,8 +16,16 @@ class NewsListPresenter @Inject constructor(
         model.loadArticles()
                 .observeOn(scheduler)
                 .subscribe(
-                        { articles -> onView { showArticles(articles) } },
+                        { articles -> handleArticles(articles) },
                         { error -> handleError(error) })
+    }
+
+    private fun handleArticles(articles: List<Article>) {
+        if (articles.isEmpty()) {
+            onView { showNoArticles() }
+        } else {
+            onView { showArticles(articles) }
+        }
     }
 
     private fun handleError(error: Throwable) {

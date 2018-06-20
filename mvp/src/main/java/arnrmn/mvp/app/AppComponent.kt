@@ -1,5 +1,6 @@
 package arnrmn.mvp.app
 
+import arnrmn.mvp.utils.network.NetworkModule
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
@@ -10,7 +11,8 @@ import javax.inject.Singleton
         modules = [
             AndroidSupportInjectionModule::class,
             AppModule::class,
-            ContributorsModule::class
+            ContributorsModule::class,
+            NetworkModule::class
         ]
 )
 interface AppComponent : AndroidInjector<MvpApplication> {

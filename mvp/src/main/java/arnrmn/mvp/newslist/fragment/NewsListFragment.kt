@@ -1,14 +1,18 @@
 package arnrmn.mvp.newslist.fragment
 
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.view.View
 import arnrmn.mvp.R
+import arnrmn.mvp.newslist.fragment.list.ArticlesAdapter
 import arnrmn.mvp.utils.android.BaseFragment
 import arnrmn.mvp.utils.entity.Article
+import kotlinx.android.synthetic.main.fragment_news_list.*
 import javax.inject.Inject
 
 class NewsListFragment : BaseFragment(), NewsListContract.View {
     @Inject lateinit var presenter: NewsListContract.Presenter
+    @Inject lateinit var adapter: ArticlesAdapter
 
     override fun getLayoutId(): Int = R.layout.fragment_news_list
 
@@ -19,6 +23,7 @@ class NewsListFragment : BaseFragment(), NewsListContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        recyclerView.adapter = adapter
         presenter.onViewReady()
     }
 
@@ -28,7 +33,7 @@ class NewsListFragment : BaseFragment(), NewsListContract.View {
     }
 
     override fun showArticles(articles: List<Article>) {
-        //Do nothing
+        adapter.update(articles)
     }
 
     override fun showNoArticles() {
@@ -36,7 +41,7 @@ class NewsListFragment : BaseFragment(), NewsListContract.View {
     }
 
     override fun showMessage(message: String) {
-        //Do nothing
+        view?.let { view -> Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show() }
     }
 
     companion object {

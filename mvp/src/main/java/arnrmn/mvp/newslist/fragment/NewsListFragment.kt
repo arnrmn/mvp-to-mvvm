@@ -24,6 +24,7 @@ class NewsListFragment : BaseFragment(), NewsListContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView.adapter = adapter
+        refreshLayout.setOnRefreshListener { presenter.onRefreshRequested() }
         presenter.onViewReady()
     }
 
@@ -41,11 +42,11 @@ class NewsListFragment : BaseFragment(), NewsListContract.View {
     }
 
     override fun showProgress() {
-        progressbar.visibility = View.VISIBLE
+        refreshLayout.isRefreshing = true
     }
 
     override fun hideProgress() {
-        progressbar.visibility = View.GONE
+        refreshLayout.isRefreshing = false
     }
 
     override fun showMessage(message: String) {

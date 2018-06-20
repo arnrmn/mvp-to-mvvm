@@ -19,6 +19,10 @@ class NewsListPresenter @Inject constructor(
         model.loadArticles().onResult(::handleArticles)
     }
 
+    override fun onRefreshRequested() {
+        onViewReady()
+    }
+
     override fun onViewDestroyed() {
         disposables.dispose()
         super.onViewDestroyed()

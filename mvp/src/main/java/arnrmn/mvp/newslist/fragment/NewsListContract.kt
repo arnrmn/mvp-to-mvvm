@@ -19,6 +19,8 @@ interface NewsListContract {
 
     interface Presenter : BasePresenter<View> {
         fun onViewReady()
+
+        fun onRefreshRequested()
     }
 
     interface Model {

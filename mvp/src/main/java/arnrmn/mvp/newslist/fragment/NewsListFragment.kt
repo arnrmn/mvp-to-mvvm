@@ -35,10 +35,13 @@ class NewsListFragment : BaseFragment(), NewsListContract.View {
 
     override fun showArticles(articles: List<Article>) {
         adapter.update(articles)
+        recyclerView.visibility = View.VISIBLE
+        noItemsTextView.visibility = View.INVISIBLE
     }
 
     override fun showNoArticles() {
-        //Do nothing
+        recyclerView.visibility = View.INVISIBLE
+        noItemsTextView.visibility = View.VISIBLE
     }
 
     override fun showProgress() {

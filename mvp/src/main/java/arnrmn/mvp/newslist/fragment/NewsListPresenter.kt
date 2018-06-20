@@ -23,9 +23,12 @@ class NewsListPresenter @Inject constructor(
         onViewReady()
     }
 
-    override fun onViewDestroyed() {
+    override fun onArticleClicked(article: Article) {
+        onView { showDetails(article) }
+    }
+
+    override fun onCleared() {
         disposables.dispose()
-        super.onViewDestroyed()
     }
 
     private fun handleArticles(articles: List<Article>) {

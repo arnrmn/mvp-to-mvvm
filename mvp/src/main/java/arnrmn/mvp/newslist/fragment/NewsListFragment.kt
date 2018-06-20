@@ -56,6 +56,10 @@ class NewsListFragment : BaseFragment(), NewsListContract.View {
         view?.let { view -> Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show() }
     }
 
+    override fun showDetails(article: Article) {
+        //TODO
+    }
+
     companion object {
         fun newInstance(): NewsListFragment {
             return NewsListFragment()

@@ -1,5 +1,6 @@
 package arnrmn.mvp.newslist.fragment
 
+import arnrmn.mvp.newslist.fragment.list.ArticleClickListener
 import arnrmn.mvp.newslist.fragment.list.ArticleViewHolderFactory
 import arnrmn.mvp.newslist.fragment.list.ArticlesAdapter
 import dagger.Binds
@@ -15,11 +16,16 @@ abstract class NewsListModule {
     @Binds
     abstract fun bindModel(model: NewsListModel): NewsListContract.Model
 
+    @Binds
+    abstract fun bindArticleClickListener(
+            presenter: NewsListContract.Presenter
+    ): ArticleClickListener
+
     @Module
     companion object {
         @JvmStatic @Provides
-        fun provideViewHolderFactory(): ArticleViewHolderFactory {
-            return ArticleViewHolderFactory()
+        fun provideViewHolderFactory(listener: ArticleClickListener): ArticleViewHolderFactory {
+            return ArticleViewHolderFactory(listener)
         }
 
         @JvmStatic @Provides

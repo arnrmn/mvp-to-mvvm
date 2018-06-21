@@ -1,4 +1,4 @@
-package dk.tv2.onboarding
+package arnrmn.mvp.utils.dagger
 
 import javax.inject.Qualifier
 

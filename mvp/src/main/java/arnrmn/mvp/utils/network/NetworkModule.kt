@@ -3,7 +3,7 @@ package arnrmn.mvp.utils.network
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import dagger.Module
 import dagger.Provides
-import dk.tv2.onboarding.IO
+import arnrmn.mvp.utils.dagger.IO
 import io.reactivex.Scheduler
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

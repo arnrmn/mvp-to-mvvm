@@ -4,7 +4,7 @@ import arnrmn.mvp.newslist.fragment.NewsListFragment
 import arnrmn.mvp.newslist.fragment.NewsListModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import dk.tv2.onboarding.FragmentScope
+import arnrmn.mvp.utils.dagger.FragmentScope
 
 @Module
 abstract class NewsListActivityModule {

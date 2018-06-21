@@ -4,8 +4,8 @@ import android.content.Context
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import dk.tv2.onboarding.IO
-import dk.tv2.onboarding.UI
+import arnrmn.mvp.utils.dagger.IO
+import arnrmn.mvp.utils.dagger.UI
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

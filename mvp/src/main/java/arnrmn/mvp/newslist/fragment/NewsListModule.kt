@@ -6,7 +6,7 @@ import arnrmn.mvp.newslist.fragment.list.ArticlesAdapter
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import dk.tv2.onboarding.FragmentScope
+import arnrmn.mvp.utils.dagger.FragmentScope
 
 @Module
 abstract class NewsListModule {

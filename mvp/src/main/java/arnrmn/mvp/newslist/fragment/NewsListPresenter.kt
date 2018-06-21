@@ -2,7 +2,7 @@ package arnrmn.mvp.newslist.fragment
 
 import arnrmn.mvp.utils.entity.Article
 import arnrmn.mvp.utils.presenter.ViewPresenter
-import dk.tv2.onboarding.UI
+import arnrmn.mvp.utils.dagger.UI
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable

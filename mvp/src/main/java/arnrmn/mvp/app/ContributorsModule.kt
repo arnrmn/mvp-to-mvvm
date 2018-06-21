@@ -4,7 +4,7 @@ import arnrmn.mvp.newslist.NewsListActivity
 import arnrmn.mvp.newslist.NewsListActivityModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import dk.tv2.onboarding.ActivityScope
+import arnrmn.mvp.utils.dagger.ActivityScope
 
 @Module
 abstract class ContributorsModule {

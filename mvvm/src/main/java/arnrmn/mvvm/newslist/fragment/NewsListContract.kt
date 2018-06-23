@@ -1,11 +1,12 @@
 package arnrmn.mvvm.newslist.fragment
 
 import android.arch.lifecycle.LiveData
+import arnrmn.mvvm.newslist.fragment.list.ArticleClickListener
 import arnrmn.mvvm.utils.entity.Article
 import io.reactivex.Single
 
 interface NewsListContract {
-    interface ViewModel {
+    interface ViewModel: ArticleClickListener {
         fun observeArticles(): LiveData<List<Article>>
 
         fun observeDetails(): LiveData<Article>
@@ -14,9 +15,9 @@ interface NewsListContract {
 
         fun observeProgress(): LiveData<Boolean>
 
-        fun onArticleClicked(article: Article)
-
         fun onRefresh()
+
+        override fun onArticleClicked(article: Article)
     }
 
     interface Model {

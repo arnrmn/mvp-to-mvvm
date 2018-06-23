@@ -3,7 +3,6 @@ package arnrmn.mvvm.newslist.fragment
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import arnrmn.mvvm.newslist.fragment.list.ArticleClickListener
 import arnrmn.mvvm.utils.entity.Article
 import arnrmn.mvvm.utils.livedata.SingleLiveData
 import io.reactivex.Single
@@ -12,7 +11,7 @@ import javax.inject.Inject
 
 class NewsListViewModel @Inject constructor(
         private val model: NewsListContract.Model
-) : ViewModel(), NewsListContract.ViewModel, ArticleClickListener {
+) : ViewModel(), NewsListContract.ViewModel {
     private val disposables = CompositeDisposable()
     private val articles = MutableLiveData<List<Article>>()
     private val progress = MutableLiveData<Boolean>()

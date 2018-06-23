@@ -44,7 +44,7 @@ class NewsListFragment : DaggerFragment() {
     }
 
     private fun showDetails(article: Article) {
-        //TODO
+        showToast(article.title)
     }
 
     private fun showProgress(showProgress: Boolean) {

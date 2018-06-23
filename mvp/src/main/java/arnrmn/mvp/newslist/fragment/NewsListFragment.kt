@@ -1,8 +1,8 @@
 package arnrmn.mvp.newslist.fragment
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.view.View
+import android.widget.Toast
 import arnrmn.mvp.R
 import arnrmn.mvp.newslist.fragment.list.ArticlesAdapter
 import arnrmn.mvp.utils.android.BaseFragment
@@ -53,11 +53,11 @@ class NewsListFragment : BaseFragment(), NewsListContract.View {
     }
 
     override fun showMessage(message: String) {
-        view?.let { view -> Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show() }
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun showDetails(article: Article) {
-        //TODO
+        showMessage(article.title)
     }
 
     companion object {

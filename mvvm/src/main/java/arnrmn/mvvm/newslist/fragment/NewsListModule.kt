@@ -10,7 +10,7 @@ import dagger.Provides
 @Module
 abstract class NewsListModule {
     @Binds
-    abstract fun bindViewModel(viewModel: NewsListViewModel): NewsListContract.MainViewModel
+    abstract fun bindViewModel(viewModel: NewsListViewModel): NewsListContract.ViewModel
 
     @Binds
     abstract fun bindArticleClickListener(viewModel: NewsListViewModel): ArticleClickListener

@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 class NewsListViewModel @Inject constructor(
         private val model: NewsListContract.Model
-) : ViewModel(), NewsListContract.MainViewModel, ArticleClickListener {
+) : ViewModel(), NewsListContract.ViewModel, ArticleClickListener {
     private val disposables = CompositeDisposable()
     private val articles = MutableLiveData<List<Article>>()
     private val progress = MutableLiveData<Boolean>()

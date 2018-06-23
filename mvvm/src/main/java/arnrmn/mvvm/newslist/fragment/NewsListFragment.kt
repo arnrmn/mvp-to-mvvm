@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 class NewsListFragment : DaggerFragment() {
     @Inject lateinit var adapter: ArticlesAdapter
-    @Inject lateinit var viewModel: NewsListContract.MainViewModel
+    @Inject lateinit var viewModel: NewsListContract.ViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -5,7 +5,7 @@ import arnrmn.mvvm.utils.entity.Article
 import io.reactivex.Single
 
 interface NewsListContract {
-    interface MainViewModel {
+    interface ViewModel {
         fun observeArticles(): LiveData<List<Article>>
 
         fun observeDetails(): LiveData<Article>

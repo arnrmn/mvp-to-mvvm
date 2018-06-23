@@ -1,34 +1,25 @@
 package arnrmn.mvvm.newslist.fragment
 
-import arnrmn.mvvm.newslist.fragment.list.ArticleClickListener
+import android.arch.lifecycle.LiveData
 import arnrmn.mvvm.utils.entity.Article
-import arnrmn.mvvm.utils.presenter.BasePresenter
 import io.reactivex.Single
 
 interface NewsListContract {
-    interface View {
-        fun showArticles(articles: List<Article>)
+    interface MainViewModel {
+        fun observeArticles(): LiveData<List<Article>>
 
-        fun showNoArticles()
+        fun observeDetails(): LiveData<Article>
 
-        fun showMessage(message: String)
+        fun observeError(): LiveData<String>
 
-        fun showProgress()
+        fun observeProgress(): LiveData<Boolean>
 
-        fun hideProgress()
+        fun onArticleClicked(article: Article)
 
-        fun showDetails(article: Article)
-    }
-
-    interface Presenter : BasePresenter<View>, ArticleClickListener {
-        fun onViewReady()
-
-        fun onRefreshRequested()
-
-        override fun onArticleClicked(article: Article)
+        fun onRefresh()
     }
 
     interface Model {
-        fun loadArticles(): Single<List<Article>>
+        fun loadNews(): Single<List<Article>>
     }
 }

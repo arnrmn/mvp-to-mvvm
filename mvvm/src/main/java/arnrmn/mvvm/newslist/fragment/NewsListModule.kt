@@ -6,25 +6,21 @@ import arnrmn.mvvm.newslist.fragment.list.ArticlesAdapter
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import arnrmn.mvvm.utils.dagger.FragmentScope
 
 @Module
 abstract class NewsListModule {
-    @Binds @FragmentScope
-    abstract fun bindPresenter(presenter: NewsListPresenter): NewsListContract.Presenter
+    @Binds
+    abstract fun bindViewModel(viewModel: NewsListViewModel): NewsListContract.MainViewModel
 
     @Binds
-    abstract fun bindModel(model: NewsListModel): NewsListContract.Model
-
-    @Binds
-    abstract fun bindArticleClickListener(
-            presenter: NewsListContract.Presenter
-    ): ArticleClickListener
+    abstract fun bindArticleClickListener(viewModel: NewsListViewModel): ArticleClickListener
 
     @Module
     companion object {
         @JvmStatic @Provides
-        fun provideViewHolderFactory(listener: ArticleClickListener): ArticleViewHolderFactory {
+        fun provideArticleViewHolderFactory(
+                listener: ArticleClickListener
+        ): ArticleViewHolderFactory {
             return ArticleViewHolderFactory(listener)
         }
 

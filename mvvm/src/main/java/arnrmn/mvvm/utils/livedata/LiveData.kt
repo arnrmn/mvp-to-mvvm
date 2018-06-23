@@ -1,4 +1,4 @@
-package arnrmn.mvvm.utils.android
+package arnrmn.mvvm.utils.livedata
 
 import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.LiveData

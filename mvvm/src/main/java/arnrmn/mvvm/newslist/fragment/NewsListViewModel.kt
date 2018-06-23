@@ -11,7 +11,7 @@ import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 class NewsListViewModel @Inject constructor(
-        private val model: NewsListModel
+        private val model: NewsListContract.Model
 ) : ViewModel(), NewsListContract.MainViewModel, ArticleClickListener {
     private val disposables = CompositeDisposable()
     private val articles = MutableLiveData<List<Article>>()
@@ -52,7 +52,7 @@ class NewsListViewModel @Inject constructor(
     }
 
     private fun loadArticles() {
-        model.getArticles().onResult(articles::postValue)
+        model.loadNews().onResult(articles::postValue)
     }
 
     private fun <T> Single<T>.onResult(action: (T) -> Unit) {

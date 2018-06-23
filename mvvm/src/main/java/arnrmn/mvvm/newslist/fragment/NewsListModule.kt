@@ -15,6 +15,9 @@ abstract class NewsListModule {
     @Binds
     abstract fun bindArticleClickListener(viewModel: NewsListViewModel): ArticleClickListener
 
+    @Binds
+    abstract fun bindModel(model: NewsListModel): NewsListContract.Model
+
     @Module
     companion object {
         @JvmStatic @Provides

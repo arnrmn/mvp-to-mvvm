@@ -9,6 +9,7 @@ import android.widget.Toast
 import arnrmn.mvvm.R
 import arnrmn.mvvm.newslist.fragment.list.ArticleClickListener
 import arnrmn.mvvm.newslist.fragment.list.ArticlesAdapter
+import arnrmn.mvvm.utils.android.setVisible
 import arnrmn.mvvm.utils.entity.Article
 import arnrmn.mvvm.utils.livedata.on
 import arnrmn.mvvm.utils.viewmodel.ViewModelFactory
@@ -27,7 +28,8 @@ class NewsListFragment : DaggerFragment(), ArticleClickListener {
         viewModel.observeError().on(this, ::showToast)
         viewModel.observeDetails().on(this, ::showDetails)
         viewModel.observeProgress().on(this, ::showProgress)
-        viewModel.observeArticles().on(this, adapter::update)
+        viewModel.observeArticles().on(this, ::showArticles)
+        viewModel.observeNoArticles().on(this, ::showNoArticles)
     }
 
     override fun onCreateView(
@@ -46,6 +48,14 @@ class NewsListFragment : DaggerFragment(), ArticleClickListener {
 
     override fun onArticleClicked(article: Article) {
         viewModel.onArticleClicked(article)
+    }
+
+    private fun showArticles(articles: List<Article>) {
+        adapter.update(articles)
+    }
+
+    private fun showNoArticles(show: Boolean) {
+        noItemsTextView.setVisible(show)
     }
 
     private fun showToast(message: String?) {

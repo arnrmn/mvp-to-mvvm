@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import arnrmn.mvvm.R
+import arnrmn.mvvm.newslist.fragment.list.ArticleClickListener
 import arnrmn.mvvm.newslist.fragment.list.ArticlesAdapter
 import arnrmn.mvvm.utils.entity.Article
 import arnrmn.mvvm.utils.livedata.on
@@ -15,7 +16,7 @@ import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_news_list.*
 import javax.inject.Inject
 
-class NewsListFragment : DaggerFragment() {
+class NewsListFragment : DaggerFragment(), ArticleClickListener {
     @Inject lateinit var adapter: ArticlesAdapter
     @Inject lateinit var viewModelFactory: ViewModelFactory
     private lateinit var viewModel: NewsListViewModel
@@ -41,6 +42,10 @@ class NewsListFragment : DaggerFragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView.adapter = adapter
         refreshLayout.setOnRefreshListener { viewModel.onRefresh() }
+    }
+
+    override fun onArticleClicked(article: Article) {
+        viewModel.onArticleClicked(article)
     }
 
     private fun showToast(message: String?) {

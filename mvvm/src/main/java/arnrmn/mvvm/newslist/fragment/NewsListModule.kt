@@ -10,7 +10,7 @@ import dagger.Provides
 @Module
 abstract class NewsListModule {
     @Binds
-    abstract fun bindArticleClickListener(viewModel: NewsListViewModel): ArticleClickListener
+    abstract fun bindArticleClickListener(fragment: NewsListFragment): ArticleClickListener
 
     @Module
     companion object {

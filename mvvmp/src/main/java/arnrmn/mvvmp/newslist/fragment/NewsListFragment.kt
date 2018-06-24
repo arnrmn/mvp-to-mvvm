@@ -8,6 +8,7 @@ import android.widget.Toast
 import arnrmn.mvvmp.R
 import arnrmn.mvvmp.newslist.fragment.list.ArticleClickListener
 import arnrmn.mvvmp.newslist.fragment.list.ArticlesAdapter
+import arnrmn.mvvmp.utils.android.setVisible
 import arnrmn.mvvmp.utils.entity.Article
 import arnrmn.mvvmp.utils.livedata.on
 import dagger.android.support.DaggerFragment
@@ -24,7 +25,8 @@ class NewsListFragment : DaggerFragment(), ArticleClickListener {
         viewModel.observeMessage().on(this, ::showToast)
         viewModel.observeDetails().on(this, ::showDetails)
         viewModel.observeProgress().on(this, ::showProgress)
-        viewModel.observeArticles().on(this, adapter::update)
+        viewModel.observeArticles().on(this, ::showArticles)
+        viewModel.observeNoArticles().on(this, ::showNoArticles)
     }
 
     override fun onCreateView(
@@ -56,6 +58,14 @@ class NewsListFragment : DaggerFragment(), ArticleClickListener {
 
     private fun showDetails(article: Article) {
         showToast(article.title)
+    }
+
+    private fun showNoArticles(visible: Boolean) {
+        noItemsTextView.setVisible(visible)
+    }
+
+    private fun showArticles(articles: List<Article>) {
+        adapter.update(articles)
     }
 
     private fun showProgress(showProgress: Boolean) {

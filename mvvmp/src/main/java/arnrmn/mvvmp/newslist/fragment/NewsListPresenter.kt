@@ -17,7 +17,14 @@ class NewsListPresenter @Inject constructor(
     }
 
     override fun onRefreshRequested() {
-        model.loadArticles().onResult(view::showArticles)
+        model.loadArticles()
+                .onResult { articles ->
+                    if(articles.isEmpty()){
+                        view.showNoArticles()
+                    } else {
+                        view.showArticles(articles)
+                    }
+                }
     }
 
     override fun onArticleClicked(article: Article) {

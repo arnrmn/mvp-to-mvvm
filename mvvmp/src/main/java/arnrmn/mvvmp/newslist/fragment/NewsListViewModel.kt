@@ -5,11 +5,10 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import arnrmn.mvvmp.utils.entity.Article
 import arnrmn.mvvmp.utils.livedata.SingleLiveData
-import io.reactivex.disposables.CompositeDisposable
 
 class NewsListViewModel : ViewModel(), NewsListContract.View {
-    private val disposables = CompositeDisposable()
     private val articles = MutableLiveData<List<Article>>()
+    private val noArticles = MutableLiveData<Boolean>()
     private val progress = MutableLiveData<Boolean>()
     private val message = SingleLiveData<String>()
     private val details = SingleLiveData<Article>()
@@ -30,11 +29,17 @@ class NewsListViewModel : ViewModel(), NewsListContract.View {
         return details
     }
 
+    fun observeNoArticles(): LiveData<Boolean> {
+        return noArticles
+    }
+
     override fun showArticles(articles: List<Article>) {
         this.articles.postValue(articles)
+        this.noArticles.postValue(false)
     }
 
     override fun showNoArticles() {
+        this.noArticles.postValue(true)
         this.articles.postValue(emptyList())
     }
 
@@ -52,9 +57,5 @@ class NewsListViewModel : ViewModel(), NewsListContract.View {
 
     override fun showDetails(article: Article) {
         this.details.postValue(article)
-    }
-
-    override fun onCleared() {
-        disposables.dispose()
     }
 }

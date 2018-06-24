@@ -7,8 +7,7 @@ import com.nhaarman.mockito_kotlin.given
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import io.reactivex.Single
-import junit.framework.Assert.assertEquals
-import junit.framework.Assert.assertTrue
+import junit.framework.Assert.*
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mockito
@@ -34,7 +33,7 @@ class NewsListViewModelTest {
 
         val viewModel = NewsListViewModel(provider)
 
-        assertEquals(null, viewModel.observeError().value)
+        assertNull(viewModel.observeError().value)
     }
 
     @Test
@@ -52,7 +51,7 @@ class NewsListViewModelTest {
 
         val viewModel = NewsListViewModel(provider)
 
-        assertEquals(null, viewModel.observeError().value)
+        assertNull(viewModel.observeError().value)
     }
 
     @Test
@@ -72,8 +71,8 @@ class NewsListViewModelTest {
 
         val viewModel = NewsListViewModel(provider)
 
-        assertEquals(null, viewModel.observeArticles().value)
-        assertEquals(null, viewModel.observeNoArticles().value)
+        assertNull(viewModel.observeArticles().value)
+        assertNull(viewModel.observeNoArticles().value)
     }
 
     @Test

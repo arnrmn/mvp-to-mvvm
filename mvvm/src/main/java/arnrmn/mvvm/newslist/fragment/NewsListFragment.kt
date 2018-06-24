@@ -1,30 +1,25 @@
 package arnrmn.mvvm.newslist.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import arnrmn.mvvm.R
 import arnrmn.mvvm.newslist.fragment.list.ArticleClickListener
 import arnrmn.mvvm.newslist.fragment.list.ArticlesAdapter
-import arnrmn.mvvm.utils.android.getViewModel
+import arnrmn.mvvm.utils.android.BaseFragment
 import arnrmn.mvvm.utils.android.setVisible
 import arnrmn.mvvm.utils.entity.Article
 import arnrmn.mvvm.utils.livedata.on
-import arnrmn.mvvm.utils.viewmodel.ViewModelFactory
-import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_news_list.*
 import javax.inject.Inject
 
-class NewsListFragment : DaggerFragment(), ArticleClickListener {
+class NewsListFragment : BaseFragment(), ArticleClickListener {
     @Inject lateinit var adapter: ArticlesAdapter
-    @Inject lateinit var factory: ViewModelFactory
     private lateinit var viewModel: NewsListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = getViewModel(factory, NewsListViewModel::class.java)
+        viewModel = getViewModel(NewsListViewModel::class)
         viewModel.observeError().on(this, ::showToast)
         viewModel.observeDetails().on(this, ::showDetails)
         viewModel.observeProgress().on(this, ::showProgress)
@@ -32,12 +27,8 @@ class NewsListFragment : DaggerFragment(), ArticleClickListener {
         viewModel.observeNoArticles().on(this, ::showNoArticles)
     }
 
-    override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_news_list, container, false)
+    override fun getLayoutId(): Int {
+        return R.layout.fragment_news_list
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

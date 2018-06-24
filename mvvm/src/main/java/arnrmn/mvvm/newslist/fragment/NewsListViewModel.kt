@@ -42,7 +42,7 @@ class NewsListViewModel @Inject constructor(
         details.postValue(article)
     }
 
-    override fun onCleared() {
+    public override fun onCleared() {
         disposables.clear()
     }
 

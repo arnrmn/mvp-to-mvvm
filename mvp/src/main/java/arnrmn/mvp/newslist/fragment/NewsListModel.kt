@@ -1,12 +1,10 @@
 package arnrmn.mvp.newslist.fragment
 
 import arnrmn.mvp.newsprovider.NewsProvider
-import arnrmn.mvp.utils.entity.Article
 import arnrmn.mvp.utils.dagger.IO
-import io.reactivex.Completable
+import arnrmn.mvp.utils.entity.Article
 import io.reactivex.Scheduler
 import io.reactivex.Single
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class NewsListModel @Inject constructor(
@@ -15,8 +13,6 @@ class NewsListModel @Inject constructor(
 ) : NewsListContract.Model {
 
     override fun loadArticles(): Single<List<Article>> {
-        return Completable.timer(2, TimeUnit.SECONDS)
-                .andThen(provider.getNews ())
-                .subscribeOn(scheduler)
+        return provider.getNews().subscribeOn(scheduler)
     }
 }

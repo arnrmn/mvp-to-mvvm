@@ -2,6 +2,7 @@ package arnrmn.mvvm.app
 
 import arnrmn.mvvm.newsprovider.NewsProviderModule
 import arnrmn.mvvm.utils.network.NetworkModule
+import arnrmn.mvvm.utils.viewmodel.ViewModelModule
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
@@ -14,7 +15,8 @@ import javax.inject.Singleton
             AppModule::class,
             ContributorsModule::class,
             NetworkModule::class,
-            NewsProviderModule::class
+            NewsProviderModule::class,
+            ViewModelModule::class
         ]
 )
 interface AppComponent : AndroidInjector<MvvmApplication> {

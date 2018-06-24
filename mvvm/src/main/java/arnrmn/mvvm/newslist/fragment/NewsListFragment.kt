@@ -1,5 +1,6 @@
 package arnrmn.mvvm.newslist.fragment
 
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,16 +10,19 @@ import arnrmn.mvvm.R
 import arnrmn.mvvm.newslist.fragment.list.ArticlesAdapter
 import arnrmn.mvvm.utils.entity.Article
 import arnrmn.mvvm.utils.livedata.on
+import arnrmn.mvvm.utils.viewmodel.ViewModelFactory
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_news_list.*
 import javax.inject.Inject
 
 class NewsListFragment : DaggerFragment() {
     @Inject lateinit var adapter: ArticlesAdapter
-    @Inject lateinit var viewModel: NewsListViewModel
+    @Inject lateinit var viewModelFactory: ViewModelFactory
+    private lateinit var viewModel: NewsListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel = ViewModelProviders.of(this, viewModelFactory)[NewsListViewModel::class.java]
         viewModel.observeError().on(this, ::showToast)
         viewModel.observeDetails().on(this, ::showDetails)
         viewModel.observeProgress().on(this, ::showProgress)

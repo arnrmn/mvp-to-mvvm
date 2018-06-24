@@ -5,29 +5,21 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import arnrmn.mvvmp.utils.entity.Article
 import arnrmn.mvvmp.utils.livedata.SingleLiveData
-import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
-import javax.inject.Inject
 
-class NewsListViewModel @Inject constructor(
-        private val model: NewsListModel
-) : ViewModel() {
+class NewsListViewModel : ViewModel(), NewsListContract.View {
     private val disposables = CompositeDisposable()
     private val articles = MutableLiveData<List<Article>>()
     private val progress = MutableLiveData<Boolean>()
-    private val error = SingleLiveData<String>()
+    private val message = SingleLiveData<String>()
     private val details = SingleLiveData<Article>()
-
-    init {
-        loadArticles()
-    }
 
     fun observeArticles(): LiveData<List<Article>> {
         return articles
     }
 
-    fun observeError(): LiveData<String> {
-        return error
+    fun observeMessage(): LiveData<String> {
+        return message
     }
 
     fun observeProgress(): LiveData<Boolean> {
@@ -38,31 +30,31 @@ class NewsListViewModel @Inject constructor(
         return details
     }
 
-    fun onRefresh() {
-        loadArticles()
+    override fun showArticles(articles: List<Article>) {
+        this.articles.postValue(articles)
     }
 
-    fun onArticleClicked(article: Article) {
-        details.postValue(article)
+    override fun showNoArticles() {
+        this.articles.postValue(emptyList())
+    }
+
+    override fun showMessage(message: String) {
+        this.message.postValue(message)
+    }
+
+    override fun showProgress() {
+        this.progress.postValue(true)
+    }
+
+    override fun hideProgress() {
+        this.progress.postValue(false)
+    }
+
+    override fun showDetails(article: Article) {
+        this.details.postValue(article)
     }
 
     override fun onCleared() {
         disposables.dispose()
-    }
-
-    private fun loadArticles() {
-        model.loadNews().onResult(articles::postValue)
-    }
-
-    private fun <T> Single<T>.onResult(action: (T) -> Unit) {
-        disposables.add(
-                this.doOnSubscribe { progress.postValue(true) }
-                        .doOnError { progress.postValue(false) }
-                        .doOnSuccess { progress.postValue(false) }
-                        .subscribe(
-                                { result -> action.invoke(result) },
-                                { cause -> error.postValue(cause.message) }
-                        )
-        )
     }
 }

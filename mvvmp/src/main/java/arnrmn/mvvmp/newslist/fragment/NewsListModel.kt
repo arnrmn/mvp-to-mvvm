@@ -10,8 +10,9 @@ import javax.inject.Inject
 class NewsListModel @Inject constructor(
         private val provider: NewsProvider,
         @IO private val scheduler: Scheduler
-) {
-    fun loadNews(): Single<List<Article>> {
+) : NewsListContract.Model {
+
+    override fun loadArticles(): Single<List<Article>> {
         return provider.getNews().subscribeOn(scheduler)
     }
 }

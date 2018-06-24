@@ -1,6 +1,5 @@
 package arnrmn.mvvmp.newslist.fragment
 
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,20 +10,18 @@ import arnrmn.mvvmp.newslist.fragment.list.ArticleClickListener
 import arnrmn.mvvmp.newslist.fragment.list.ArticlesAdapter
 import arnrmn.mvvmp.utils.entity.Article
 import arnrmn.mvvmp.utils.livedata.on
-import arnrmn.mvvmp.utils.viewmodel.ViewModelFactory
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_news_list.*
 import javax.inject.Inject
 
 class NewsListFragment : DaggerFragment(), ArticleClickListener {
     @Inject lateinit var adapter: ArticlesAdapter
-    @Inject lateinit var viewModelFactory: ViewModelFactory
-    private lateinit var viewModel: NewsListViewModel
+    @Inject lateinit var presenter: NewsListContract.Presenter
+    @Inject lateinit var viewModel: NewsListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProviders.of(this, viewModelFactory)[NewsListViewModel::class.java]
-        viewModel.observeError().on(this, ::showToast)
+        viewModel.observeMessage().on(this, ::showToast)
         viewModel.observeDetails().on(this, ::showDetails)
         viewModel.observeProgress().on(this, ::showProgress)
         viewModel.observeArticles().on(this, adapter::update)
@@ -38,14 +35,19 @@ class NewsListFragment : DaggerFragment(), ArticleClickListener {
         return inflater.inflate(R.layout.fragment_news_list, container, false)
     }
 
+    override fun onDestroyView() {
+        presenter.onCleared()
+        super.onDestroyView()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView.adapter = adapter
-        refreshLayout.setOnRefreshListener { viewModel.onRefresh() }
+        refreshLayout.setOnRefreshListener { presenter.onRefreshRequested() }
     }
 
     override fun onArticleClicked(article: Article) {
-        viewModel.onArticleClicked(article)
+        presenter.onArticleClicked(article)
     }
 
     private fun showToast(message: String?) {

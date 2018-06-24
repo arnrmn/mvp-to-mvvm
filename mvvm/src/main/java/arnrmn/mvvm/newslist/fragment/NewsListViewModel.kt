@@ -3,6 +3,7 @@ package arnrmn.mvvm.newslist.fragment
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import arnrmn.mvvm.newslist.fragment.list.ArticleClickListener
 import arnrmn.mvvm.utils.entity.Article
 import arnrmn.mvvm.utils.livedata.SingleLiveData
 import io.reactivex.Single
@@ -10,8 +11,8 @@ import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 class NewsListViewModel @Inject constructor(
-        private val model: NewsListContract.Model
-) : ViewModel(), NewsListContract.ViewModel {
+        private val model: NewsListModel
+) : ViewModel(), ArticleClickListener {
     private val disposables = CompositeDisposable()
     private val articles = MutableLiveData<List<Article>>()
     private val progress = MutableLiveData<Boolean>()
@@ -22,20 +23,24 @@ class NewsListViewModel @Inject constructor(
         loadArticles()
     }
 
-    override fun observeArticles(): LiveData<List<Article>> {
+    fun observeArticles(): LiveData<List<Article>> {
         return articles
     }
 
-    override fun observeError(): LiveData<String> {
+    fun observeError(): LiveData<String> {
         return error
     }
 
-    override fun observeProgress(): LiveData<Boolean> {
+    fun observeProgress(): LiveData<Boolean> {
         return progress
     }
 
-    override fun observeDetails(): LiveData<Article> {
+    fun observeDetails(): LiveData<Article> {
         return details
+    }
+
+    fun onRefresh() {
+        loadArticles()
     }
 
     override fun onArticleClicked(article: Article) {
@@ -44,10 +49,6 @@ class NewsListViewModel @Inject constructor(
 
     override fun onCleared() {
         disposables.dispose()
-    }
-
-    override fun onRefresh() {
-        loadArticles()
     }
 
     private fun loadArticles() {

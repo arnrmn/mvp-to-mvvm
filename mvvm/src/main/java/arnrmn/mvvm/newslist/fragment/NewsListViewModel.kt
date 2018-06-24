@@ -3,6 +3,7 @@ package arnrmn.mvvm.newslist.fragment
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import arnrmn.mvvm.newsprovider.NewsProvider
 import arnrmn.mvvm.utils.entity.Article
 import arnrmn.mvvm.utils.livedata.SingleLiveData
 import io.reactivex.Single
@@ -10,7 +11,7 @@ import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 class NewsListViewModel @Inject constructor(
-        private val model: NewsListModel
+        private val model: NewsProvider
 ) : ViewModel() {
     private val disposables = CompositeDisposable()
     private val articles = MutableLiveData<List<Article>>()
@@ -42,11 +43,11 @@ class NewsListViewModel @Inject constructor(
     }
 
     override fun onCleared() {
-        disposables.dispose()
+        disposables.clear()
     }
 
     private fun loadArticles() {
-        model.loadNews()
+        model.getNews()
                 .onResult { articles ->
                     this.articles.postValue(articles)
                     this.noArticles.postValue(articles.isEmpty())

@@ -1,21 +1,19 @@
 package arnrmn.mvvmp.newslist.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import arnrmn.mvvmp.R
 import arnrmn.mvvmp.newslist.fragment.list.ArticleClickListener
 import arnrmn.mvvmp.newslist.fragment.list.ArticlesAdapter
+import arnrmn.mvvmp.utils.android.BaseFragment
 import arnrmn.mvvmp.utils.android.setVisible
 import arnrmn.mvvmp.utils.entity.Article
 import arnrmn.mvvmp.utils.livedata.on
-import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_news_list.*
 import javax.inject.Inject
 
-class NewsListFragment : DaggerFragment(), ArticleClickListener {
+class NewsListFragment : BaseFragment(), ArticleClickListener {
     @Inject lateinit var adapter: ArticlesAdapter
     @Inject lateinit var presenter: NewsListContract.Presenter
     @Inject lateinit var viewModel: NewsListViewModel
@@ -29,12 +27,8 @@ class NewsListFragment : DaggerFragment(), ArticleClickListener {
         viewModel.observeNoArticles().on(this, ::showNoArticles)
     }
 
-    override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_news_list, container, false)
+    override fun getLayoutId(): Int {
+        return R.layout.fragment_news_list
     }
 
     override fun onDestroyView() {

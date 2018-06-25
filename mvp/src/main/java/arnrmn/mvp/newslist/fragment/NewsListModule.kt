@@ -14,9 +14,7 @@ abstract class NewsListModule {
     abstract fun bindPresenter(presenter: NewsListPresenter): NewsListContract.Presenter
 
     @Binds
-    abstract fun bindArticleClickListener(
-            presenter: NewsListContract.Presenter
-    ): ArticleClickListener
+    abstract fun bindArticleClickListener(fragment: NewsListFragment): ArticleClickListener
 
     @Module
     companion object {

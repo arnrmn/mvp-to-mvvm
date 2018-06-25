@@ -1,6 +1,5 @@
 package arnrmn.mvp.newslist.fragment
 
-import arnrmn.mvp.newslist.fragment.list.ArticleClickListener
 import arnrmn.mvp.utils.entity.Article
 import arnrmn.mvp.utils.presenter.BasePresenter
 
@@ -19,11 +18,11 @@ interface NewsListContract {
         fun showDetails(article: Article)
     }
 
-    interface Presenter : BasePresenter<View>, ArticleClickListener {
+    interface Presenter : BasePresenter<View> {
         fun onViewReady()
 
         fun onRefreshRequested()
 
-        override fun onArticleClicked(article: Article)
+        fun onArticleClicked(article: Article)
     }
 }

@@ -4,13 +4,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import arnrmn.mvp.R
+import arnrmn.mvp.newslist.fragment.list.ArticleClickListener
 import arnrmn.mvp.newslist.fragment.list.ArticlesAdapter
 import arnrmn.mvp.utils.android.BaseFragment
 import arnrmn.mvp.utils.entity.Article
 import kotlinx.android.synthetic.main.fragment_news_list.*
 import javax.inject.Inject
 
-class NewsListFragment : BaseFragment(), NewsListContract.View {
+class NewsListFragment : BaseFragment(), NewsListContract.View, ArticleClickListener {
     @Inject lateinit var presenter: NewsListContract.Presenter
     @Inject lateinit var adapter: ArticlesAdapter
 
@@ -58,6 +59,10 @@ class NewsListFragment : BaseFragment(), NewsListContract.View {
 
     override fun showDetails(article: Article) {
         showMessage(article.title)
+    }
+
+    override fun onArticleClicked(article: Article) {
+        presenter.onArticleClicked(article)
     }
 
     companion object {

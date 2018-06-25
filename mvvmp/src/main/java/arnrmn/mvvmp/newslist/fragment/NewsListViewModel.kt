@@ -13,25 +13,15 @@ class NewsListViewModel : ViewModel(), NewsListContract.View {
     private val message = SingleLiveData<String>()
     private val details = SingleLiveData<Article>()
 
-    fun observeArticles(): LiveData<List<Article>> {
-        return articles
-    }
+    fun observeArticles(): LiveData<List<Article>> = articles
 
-    fun observeMessage(): LiveData<String> {
-        return message
-    }
+    fun observeMessage(): LiveData<String> = message
 
-    fun observeProgress(): LiveData<Boolean> {
-        return progress
-    }
+    fun observeProgress(): LiveData<Boolean> = progress
 
-    fun observeDetails(): LiveData<Article> {
-        return details
-    }
+    fun observeDetails(): LiveData<Article> = details
 
-    fun observeNoArticles(): LiveData<Boolean> {
-        return noArticles
-    }
+    fun observeNoArticles(): LiveData<Boolean> = noArticles
 
     override fun showArticles(articles: List<Article>) {
         this.articles.postValue(articles)

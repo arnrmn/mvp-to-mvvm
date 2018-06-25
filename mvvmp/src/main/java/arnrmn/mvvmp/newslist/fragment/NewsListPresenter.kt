@@ -17,14 +17,7 @@ class NewsListPresenter @Inject constructor(
     }
 
     override fun onRefreshRequested() {
-        model.loadArticles()
-                .onResult { articles ->
-                    if(articles.isEmpty()){
-                        view.showNoArticles()
-                    } else {
-                        view.showArticles(articles)
-                    }
-                }
+        model.loadArticles().onResult(::handleArticles)
     }
 
     override fun onArticleClicked(article: Article) {
@@ -33,6 +26,14 @@ class NewsListPresenter @Inject constructor(
 
     override fun onCleared() {
         disposables.clear()
+    }
+
+    private fun handleArticles(articles: List<Article>) {
+        if (articles.isEmpty()) {
+            view.showNoArticles()
+        } else {
+            view.showArticles(articles)
+        }
     }
 
     private fun handleError(error: Throwable) {

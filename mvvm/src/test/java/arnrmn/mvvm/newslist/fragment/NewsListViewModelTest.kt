@@ -8,13 +8,19 @@ import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import io.reactivex.Single
 import junit.framework.Assert.*
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mockito
+import org.mockito.Mockito.clearInvocations
 
 class NewsListViewModelTest {
     @get:Rule val rule = InstantTaskExecutorRule()
     private val provider = mock<NewsProvider>()
+
+    @Before
+    fun setup() {
+        clearInvocations(provider)
+    }
 
     @Test
     fun init_articlesLoaded_valueSet() {
@@ -106,7 +112,7 @@ class NewsListViewModelTest {
     fun onRefresh_loadsArticles() {
         given(provider.getNews()).willReturn(Single.just(emptyList()))
         val viewModel = NewsListViewModel(provider)
-        Mockito.clearInvocations(provider)
+        clearInvocations(provider)
 
         viewModel.onRefresh()
 

@@ -2,7 +2,6 @@ package arnrmn.mvvmp.newslist.fragment
 
 import arnrmn.mvvmp.newslist.fragment.list.ArticleClickListener
 import arnrmn.mvvmp.utils.entity.Article
-import io.reactivex.Single
 
 interface NewsListContract {
     interface View {
@@ -25,9 +24,5 @@ interface NewsListContract {
         fun onCleared()
 
         override fun onArticleClicked(article: Article)
-    }
-
-    interface Model {
-        fun loadArticles(): Single<List<Article>>
     }
 }

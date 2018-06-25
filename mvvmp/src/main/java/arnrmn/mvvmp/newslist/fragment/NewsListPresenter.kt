@@ -1,5 +1,6 @@
 package arnrmn.mvvmp.newslist.fragment
 
+import arnrmn.mvvmp.newsprovider.NewsProvider
 import arnrmn.mvvmp.utils.entity.Article
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
@@ -8,7 +9,7 @@ import javax.inject.Inject
 
 class NewsListPresenter @Inject constructor(
         private val view: NewsListContract.View,
-        private val model: NewsListContract.Model
+        private val provider: NewsProvider
 ) : NewsListContract.Presenter {
     private val disposables = CompositeDisposable()
 
@@ -17,7 +18,7 @@ class NewsListPresenter @Inject constructor(
     }
 
     override fun onRefreshRequested() {
-        model.loadArticles().onResult(::handleArticles)
+        provider.getNews().onResult(::handleArticles)
     }
 
     override fun onArticleClicked(article: Article) {

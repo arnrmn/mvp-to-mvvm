@@ -5,7 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import arnrmn.mvvm.R
+import arnrmn.mvvm.newsdetails.fragment.NewsDetailsFragment
 import arnrmn.mvvm.utils.android.BaseActivity
+import arnrmn.mvvm.utils.android.replaceFragment
 import arnrmn.mvvm.utils.entity.Article
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
@@ -15,6 +17,7 @@ class NewsDetailsActivity : BaseActivity() {
         setContentView(R.layout.activity_base)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        replaceFragment(NewsDetailsFragment.newInstance(getArticle()))
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -22,6 +25,10 @@ class NewsDetailsActivity : BaseActivity() {
             onBackPressed()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun getArticle(): Article {
+        return intent.extras.getParcelable(EXTRA_ARTICLE)
     }
 
     companion object {

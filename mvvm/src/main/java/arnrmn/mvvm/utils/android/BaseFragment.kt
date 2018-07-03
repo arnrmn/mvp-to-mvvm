@@ -12,7 +12,7 @@ import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 import kotlin.reflect.KClass
 
-abstract class BaseFragment : DaggerFragment(){
+abstract class BaseFragment : DaggerFragment() {
 
     @Inject lateinit var viewModelFactory: ViewModelFactory
 
@@ -24,7 +24,7 @@ abstract class BaseFragment : DaggerFragment(){
         return layoutInflater.inflate(getLayoutId(), container, false)
     }
 
-    fun <T: ViewModel> getViewModel(clazz: KClass<T>): T {
+    protected fun <T : ViewModel> getViewModel(clazz: KClass<T>): T {
         return ViewModelProviders.of(this, viewModelFactory)[clazz.java]
     }
 

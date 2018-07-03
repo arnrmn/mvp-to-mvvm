@@ -1,4 +1,4 @@
-package arnrmn.mvvm.newsdetails.fragment
+package arnrmn.mvvm.newsdetails.fragment.formatter
 
 import arnrmn.mvvm.utils.entity.Article
 import javax.inject.Inject

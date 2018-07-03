@@ -3,6 +3,8 @@ package arnrmn.mvvm.newsdetails.fragment
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import arnrmn.mvvm.newsdetails.fragment.formatter.ArticleDescriptionFormatter
+import arnrmn.mvvm.newsdetails.fragment.formatter.ArticleTitleFormatter
 import arnrmn.mvvm.utils.entity.Article
 import arnrmn.mvvm.utils.livedata.SingleLiveData
 import javax.inject.Inject

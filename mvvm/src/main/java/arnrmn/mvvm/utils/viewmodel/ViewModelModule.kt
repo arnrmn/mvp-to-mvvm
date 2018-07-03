@@ -2,6 +2,7 @@ package arnrmn.mvvm.utils.viewmodel
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
+import arnrmn.mvvm.newsdetails.fragment.NewsDetailsViewModel
 import arnrmn.mvvm.newslist.fragment.NewsListViewModel
 import dagger.Binds
 import dagger.Module
@@ -13,5 +14,8 @@ abstract class ViewModelModule {
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 
     @Binds @IntoMap @ViewModelKey(NewsListViewModel::class)
-    abstract fun mainViewModel(viewModel: NewsListViewModel): ViewModel
+    abstract fun listViewModel(viewModel: NewsListViewModel): ViewModel
+
+    @Binds @IntoMap @ViewModelKey(NewsDetailsViewModel::class)
+    abstract fun detailsViewModel(viewModel: NewsDetailsViewModel): ViewModel
 }

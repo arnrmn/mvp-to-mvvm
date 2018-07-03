@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import arnrmn.mvvm.R
+import arnrmn.mvvm.newsdetails.NewsDetailsActivity
 import arnrmn.mvvm.newslist.fragment.list.ArticleClickListener
 import arnrmn.mvvm.newslist.fragment.list.ArticlesAdapter
 import arnrmn.mvvm.utils.android.BaseFragment
@@ -54,7 +55,7 @@ class NewsListFragment : BaseFragment(), ArticleClickListener {
     }
 
     private fun showDetails(article: Article) {
-        showToast(article.title)
+        NewsDetailsActivity.start(context, article)
     }
 
     private fun showProgress(showProgress: Boolean) {

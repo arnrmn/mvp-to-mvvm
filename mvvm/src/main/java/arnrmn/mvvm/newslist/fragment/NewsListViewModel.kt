@@ -3,9 +3,9 @@ package arnrmn.mvvm.newslist.fragment
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import arnrmn.mvvm.newsprovider.NewsProvider
 import arnrmn.mvvm.utils.entity.Article
 import arnrmn.mvvm.utils.livedata.SingleLiveData
+import arnrmn.mvvm.utils.newsprovider.NewsProvider
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject

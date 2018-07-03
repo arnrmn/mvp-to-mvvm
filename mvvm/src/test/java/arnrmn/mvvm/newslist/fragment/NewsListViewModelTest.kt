@@ -1,8 +1,8 @@
 package arnrmn.mvvm.newslist.fragment
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
-import arnrmn.mvvm.newsprovider.NewsProvider
 import arnrmn.mvvm.utils.entity.Article
+import arnrmn.mvvm.utils.newsprovider.NewsProvider
 import com.nhaarman.mockito_kotlin.given
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify

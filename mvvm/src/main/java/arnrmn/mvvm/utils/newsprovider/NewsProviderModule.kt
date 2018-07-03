@@ -1,4 +1,4 @@
-package arnrmn.mvvm.newsprovider
+package arnrmn.mvvm.utils.newsprovider
 
 import dagger.Binds
 import dagger.Module

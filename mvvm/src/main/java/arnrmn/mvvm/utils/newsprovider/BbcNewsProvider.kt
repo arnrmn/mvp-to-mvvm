@@ -1,4 +1,4 @@
-package arnrmn.mvvm.newsprovider
+package arnrmn.mvvm.utils.newsprovider
 
 import arnrmn.mvvm.utils.entity.Article
 import arnrmn.mvvm.utils.network.RestApi

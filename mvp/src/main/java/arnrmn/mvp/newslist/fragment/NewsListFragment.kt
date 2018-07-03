@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import arnrmn.mvp.R
+import arnrmn.mvp.newsdetails.NewsDetailsActivity
 import arnrmn.mvp.newslist.fragment.list.ArticleClickListener
 import arnrmn.mvp.newslist.fragment.list.ArticlesAdapter
 import arnrmn.mvp.utils.android.BaseFragment
@@ -58,7 +59,7 @@ class NewsListFragment : BaseFragment(), NewsListContract.View, ArticleClickList
     }
 
     override fun showDetails(article: Article) {
-        showMessage(article.title)
+        NewsDetailsActivity.start(context, article)
     }
 
     override fun onArticleClicked(article: Article) {

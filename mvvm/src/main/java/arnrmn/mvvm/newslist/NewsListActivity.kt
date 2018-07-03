@@ -13,6 +13,8 @@ class NewsListActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
         setSupportActionBar(toolbar)
-        replaceFragment(NewsListFragment.newInstance())
+        if (savedInstanceState == null) {
+            replaceFragment(NewsListFragment.newInstance())
+        }
     }
 }

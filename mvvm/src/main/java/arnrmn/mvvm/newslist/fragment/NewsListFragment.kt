@@ -10,7 +10,6 @@ import arnrmn.mvvm.newslist.fragment.list.ArticlesAdapter
 import arnrmn.mvvm.utils.android.BaseFragment
 import arnrmn.mvvm.utils.android.setVisible
 import arnrmn.mvvm.utils.entity.Article
-import arnrmn.mvvm.utils.livedata.on
 import kotlinx.android.synthetic.main.fragment_news_list.*
 import javax.inject.Inject
 
@@ -18,23 +17,19 @@ class NewsListFragment : BaseFragment(), ArticleClickListener {
     @Inject lateinit var adapter: ArticlesAdapter
     private lateinit var viewModel: NewsListViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = getViewModel(NewsListViewModel::class)
-        viewModel.observeError().on(this, ::showToast)
-        viewModel.observeDetails().on(this, ::showDetails)
-        viewModel.observeProgress().on(this, ::showProgress)
-        viewModel.observeArticles().on(this, ::showArticles)
-        viewModel.observeNoArticles().on(this, ::showNoArticles)
-    }
-
     override fun getLayoutId(): Int {
         return R.layout.fragment_news_list
     }
-
+    
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView.adapter = adapter
+        viewModel = getViewModel(NewsListViewModel::class)
+        viewModel.observeError().with(::showToast)
+        viewModel.observeDetails().with(::showDetails)
+        viewModel.observeProgress().with(::showProgress)
+        viewModel.observeArticles().with(::showArticles)
+        viewModel.observeNoArticles().with(::showNoArticles)
         refreshLayout.setOnRefreshListener { viewModel.onRefresh() }
     }
 

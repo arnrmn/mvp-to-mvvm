@@ -7,7 +7,6 @@ import arnrmn.mvvm.R
 import arnrmn.mvvm.utils.android.BaseFragment
 import arnrmn.mvvm.utils.android.loadUrl
 import arnrmn.mvvm.utils.entity.Article
-import arnrmn.mvvm.utils.livedata.on
 import kotlinx.android.synthetic.main.fragment_news_details.*
 
 class NewsDetailsFragment : BaseFragment() {
@@ -21,10 +20,10 @@ class NewsDetailsFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         openButton.setOnClickListener { viewModel.onButtonClicked() }
         viewModel = getViewModel(NewsDetailsViewModel::class)
-        viewModel.observeImageUrl().on(this, imageView::loadUrl)
-        viewModel.observeTitle().on(this, titleTextView::setText)
-        viewModel.observeDescription().on(this, descriptionTextView::setText)
-        viewModel.observeOpenLinkAction().on(this, ::showToast)
+        viewModel.observeTitle().with(titleTextView::setText)
+        viewModel.observeImageUrl().with(imageView::loadUrl)
+        viewModel.observeDescription().with(descriptionTextView::setText)
+        viewModel.observeOpenLinkAction().with(::showToast)
         viewModel.onArticleSelected(getSelectedArticle())
     }
 

@@ -1,4 +1,4 @@
-package arnrmn.mvp.newsprovider
+package arnrmn.mvp.utils.newsprovider
 
 import arnrmn.mvp.utils.entity.Article
 import io.reactivex.Single

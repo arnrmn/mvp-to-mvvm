@@ -1,7 +1,7 @@
 package arnrmn.mvp.app
 
-import arnrmn.mvp.newsprovider.NewsProviderModule
 import arnrmn.mvp.utils.network.NetworkModule
+import arnrmn.mvp.utils.newsprovider.NewsProviderModule
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule

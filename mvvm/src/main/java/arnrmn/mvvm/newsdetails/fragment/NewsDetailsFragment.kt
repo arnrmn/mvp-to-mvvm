@@ -20,10 +20,10 @@ class NewsDetailsFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         openButton.setOnClickListener { viewModel.onButtonClicked() }
         viewModel = getViewModel(NewsDetailsViewModel::class)
-        viewModel.observeTitle().with(titleTextView::setText)
-        viewModel.observeImageUrl().with(imageView::loadUrl)
-        viewModel.observeDescription().with(descriptionTextView::setText)
-        viewModel.observeOpenLinkAction().with(::showToast)
+        viewModel.observeTitle().onResult(titleTextView::setText)
+        viewModel.observeImageUrl().onResult(imageView::loadUrl)
+        viewModel.observeDescription().onResult(descriptionTextView::setText)
+        viewModel.observeOpenLinkAction().onResult(::showToast)
         viewModel.onArticleSelected(getSelectedArticle())
     }
 

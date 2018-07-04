@@ -30,7 +30,7 @@ abstract class BaseFragment : DaggerFragment() {
         return ViewModelProviders.of(this, viewModelFactory)[clazz.java]
     }
 
-    protected fun <T> LiveData<T>.with(action: (T) -> Unit) {
+    protected fun <T> LiveData<T>.onResult(action: (T) -> Unit) {
             observe(this@BaseFragment, Observer { data -> data?.let(action) })
     }
 

@@ -25,11 +25,11 @@ class NewsListFragment : BaseFragment(), ArticleClickListener {
         super.onViewCreated(view, savedInstanceState)
         recyclerView.adapter = adapter
         viewModel = getViewModel(NewsListViewModel::class)
-        viewModel.observeError().with(::showToast)
-        viewModel.observeDetails().with(::showDetails)
-        viewModel.observeProgress().with(::showProgress)
-        viewModel.observeArticles().with(::showArticles)
-        viewModel.observeNoArticles().with(::showNoArticles)
+        viewModel.observeError().onResult(::showToast)
+        viewModel.observeDetails().onResult(::showDetails)
+        viewModel.observeProgress().onResult(::showProgress)
+        viewModel.observeArticles().onResult(::showArticles)
+        viewModel.observeNoArticles().onResult(::showNoArticles)
         refreshLayout.setOnRefreshListener { viewModel.onRefresh() }
     }
 

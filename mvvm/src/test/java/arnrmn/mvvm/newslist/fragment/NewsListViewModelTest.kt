@@ -23,7 +23,7 @@ class NewsListViewModelTest {
     }
 
     @Test
-    fun init_articlesLoaded_valueSet() {
+    fun init_articlesLoaded_articlesSet() {
         val articles = emptyList<Article>()
         given(provider.getNews()).willReturn(Single.just(articles))
 
@@ -33,7 +33,7 @@ class NewsListViewModelTest {
     }
 
     @Test
-    fun init_articlesLoaded_noErrorIsSet() {
+    fun init_articlesLoaded_noErrorSet() {
         val articles = emptyList<Article>()
         given(provider.getNews()).willReturn(Single.just(articles))
 
@@ -52,7 +52,7 @@ class NewsListViewModelTest {
     }
 
     @Test
-    fun init_emptyArticlesListLoaded_noErrorIsSet() {
+    fun init_emptyArticlesListLoaded_noErrorSet() {
         given(provider.getNews()).willReturn(Single.just(emptyList()))
 
         val viewModel = NewsListViewModel(provider)
@@ -61,7 +61,7 @@ class NewsListViewModelTest {
     }
 
     @Test
-    fun init_errorOnLoading_messageIsSet() {
+    fun init_errorOnLoading_messageSet() {
         val message = "test.message"
         val error = RuntimeException(message)
         given(provider.getNews()).willReturn(Single.error(error))
@@ -72,7 +72,7 @@ class NewsListViewModelTest {
     }
 
     @Test
-    fun init_errorOnLoading_articlesAreNotSet() {
+    fun init_errorOnLoading_noArticlesSet() {
         given(provider.getNews()).willReturn(Single.error(RuntimeException()))
 
         val viewModel = NewsListViewModel(provider)

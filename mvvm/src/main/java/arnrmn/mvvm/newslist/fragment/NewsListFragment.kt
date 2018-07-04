@@ -8,7 +8,7 @@ import arnrmn.mvvm.newsdetails.NewsDetailsActivity
 import arnrmn.mvvm.newslist.fragment.list.ArticleClickListener
 import arnrmn.mvvm.newslist.fragment.list.ArticlesAdapter
 import arnrmn.mvvm.utils.android.BaseFragment
-import arnrmn.mvvm.utils.android.setVisible
+import arnrmn.mvvm.utils.android.setVisiblility
 import arnrmn.mvvm.utils.entity.Article
 import kotlinx.android.synthetic.main.fragment_news_list.*
 import javax.inject.Inject
@@ -42,7 +42,7 @@ class NewsListFragment : BaseFragment(), ArticleClickListener {
     }
 
     private fun showNoArticles(show: Boolean) {
-        noItemsTextView.setVisible(show)
+        noItemsTextView.setVisiblility(show)
     }
 
     private fun showToast(message: String?) {

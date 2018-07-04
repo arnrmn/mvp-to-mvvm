@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".main.MainActivity">
+        <activity android:name=".newspager.NewsPagerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -22,8 +22,6 @@
         </activity>
 
         <activity android:name=".newsdetails.NewsDetailsActivity"/>
-
-        <activity android:name=".newspager.NewsPagerActivity"/>
 
         <activity android:name=".newslist.NewsListActivity"/>
 

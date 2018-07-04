@@ -1,7 +1,7 @@
 package arnrmn.mvvm.newspager.fragment
 
-import arnrmn.mvvm.newsdetails.fragment.NewsDetailsFragment
-import arnrmn.mvvm.newsdetails.fragment.NewsDetailsModule
+import arnrmn.mvvm.newslist.fragment.NewsListFragment
+import arnrmn.mvvm.newslist.fragment.NewsListModule
 import arnrmn.mvvm.utils.dagger.ChildFragmentScope
 import dagger.Module
 import dagger.Provides
@@ -10,8 +10,8 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class NewsPagerModule {
     @ChildFragmentScope
-    @ContributesAndroidInjector(modules = [NewsDetailsModule::class])
-    abstract fun contributeDetailsFragment(): NewsDetailsFragment
+    @ContributesAndroidInjector(modules = [NewsListModule::class])
+    abstract fun contributeDetailsFragment(): NewsListFragment
 
     @Module
     companion object {

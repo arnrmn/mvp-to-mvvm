@@ -11,7 +11,7 @@ class BbcNewsProvider @Inject constructor(
         private val restApi: RestApi
 ) : NewsProvider {
     override fun getNews(): Single<List<Article>> {
-        return Completable.timer(1, TimeUnit.SECONDS)
+        return Completable.timer(4, TimeUnit.SECONDS)
                 .andThen(restApi.getTopHeadlines (SOURCE))
                 .map { response -> response.articles }
     }

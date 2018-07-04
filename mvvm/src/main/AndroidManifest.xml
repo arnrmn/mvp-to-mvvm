@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="arnrmn.mvvm.newslist.NewsListActivity">
+        <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -22,6 +22,10 @@
         </activity>
 
         <activity android:name=".newsdetails.NewsDetailsActivity"/>
+
+        <activity android:name=".newspager.NewsPagerActivity"/>
+
+        <activity android:name=".newslist.NewsListActivity"/>
 
     </application>
 </manifest>

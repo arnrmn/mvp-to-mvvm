@@ -1,5 +1,7 @@
 package arnrmn.mvvm.newslist
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import arnrmn.mvvm.R
 import arnrmn.mvvm.newslist.fragment.NewsListFragment
@@ -15,6 +17,16 @@ class NewsListActivity : BaseActivity() {
         setSupportActionBar(toolbar)
         if (savedInstanceState == null) {
             replaceFragment(NewsListFragment.newInstance())
+        }
+    }
+
+    companion object {
+        fun start(context: Context?) {
+            context?.startActivity(createIntent(context))
+        }
+
+        fun createIntent(context: Context?): Intent {
+            return Intent(context, NewsListActivity::class.java)
         }
     }
 }

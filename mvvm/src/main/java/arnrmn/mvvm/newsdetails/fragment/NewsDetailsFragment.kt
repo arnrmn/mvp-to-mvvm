@@ -19,7 +19,7 @@ class NewsDetailsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         openButton.setOnClickListener { viewModel.onButtonClicked() }
-        viewModel = getViewModel(NewsDetailsViewModel::class)
+        viewModel = getViewModel()
         viewModel.observeTitle().onResult(titleTextView::setText)
         viewModel.observeImageUrl().onResult(imageView::loadUrl)
         viewModel.observeDescription().onResult(descriptionTextView::setText)

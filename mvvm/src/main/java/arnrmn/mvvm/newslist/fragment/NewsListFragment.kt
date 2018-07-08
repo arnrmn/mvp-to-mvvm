@@ -20,11 +20,11 @@ class NewsListFragment : BaseFragment(), ArticleClickListener {
     override fun getLayoutId(): Int {
         return R.layout.fragment_news_list
     }
-    
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView.adapter = adapter
-        viewModel = getViewModel(NewsListViewModel::class)
+        viewModel = getViewModel()
         viewModel.observeError().onResult(::showToast)
         viewModel.observeDetails().onResult(::showDetails)
         viewModel.observeProgress().onResult(::showProgress)

@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 class NewsListFragment : BaseFragment(), ArticleClickListener {
     @Inject lateinit var adapter: ArticlesAdapter
-    private lateinit var viewModel: NewsListViewModel
+    private val viewModel by lazy { getViewModel<NewsListViewModel>() }
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_news_list
@@ -24,7 +24,6 @@ class NewsListFragment : BaseFragment(), ArticleClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView.adapter = adapter
-        viewModel = getViewModel()
         viewModel.observeError().onResult(::showToast)
         viewModel.observeDetails().onResult(::showDetails)
         viewModel.observeProgress().onResult(::showProgress)

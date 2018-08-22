@@ -1,10 +1,9 @@
-package arnrmn.mvvmkoin.newspager
+package arnrmn.mvvmkoin.main
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import arnrmn.mvvmkoin.R
-import arnrmn.mvvmkoin.newspager.fragment.NewsPagerFragment
 import arnrmn.mvvmkoin.utils.android.BaseActivity
 import arnrmn.mvvmkoin.utils.android.replaceFragment
 import kotlinx.android.synthetic.main.layout_toolbar.*

@@ -1,4 +1,4 @@
-package arnrmn.mvvmkoin.newslist.fragment.list
+package arnrmn.mvvmkoin.newslist.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

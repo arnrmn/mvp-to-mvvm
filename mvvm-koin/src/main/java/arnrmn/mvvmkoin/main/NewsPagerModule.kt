@@ -1,4 +1,4 @@
-package arnrmn.mvvmkoin.newspager.fragment
+package arnrmn.mvvmkoin.main
 
 import android.support.v4.app.FragmentManager
 import org.koin.dsl.module.Module

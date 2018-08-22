@@ -1,4 +1,4 @@
-package arnrmn.mvvmkoin.newslist.fragment.list
+package arnrmn.mvvmkoin.newslist.list
 
 import arnrmn.mvvmkoin.utils.entity.Article
 

@@ -1,4 +1,4 @@
-package arnrmn.mvvmkoin.newslist.fragment
+package arnrmn.mvvmkoin.newslist
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData

@@ -1,4 +1,4 @@
-package arnrmn.mvvmkoin.newslist.fragment.list
+package arnrmn.mvvmkoin.newslist.list
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup

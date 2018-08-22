@@ -1,4 +1,4 @@
-package arnrmn.mvvmkoin.newspager.fragment
+package arnrmn.mvvmkoin.main
 
 import android.os.Bundle
 import android.view.View

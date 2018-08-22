@@ -1,6 +1,7 @@
 package arnrmn.mvvmkoin.newslist.fragment
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
+import arnrmn.mvvmkoin.newslist.NewsListViewModel
 import arnrmn.mvvmkoin.utils.entity.Article
 import arnrmn.mvvmkoin.utils.newsprovider.NewsProvider
 import com.nhaarman.mockito_kotlin.given

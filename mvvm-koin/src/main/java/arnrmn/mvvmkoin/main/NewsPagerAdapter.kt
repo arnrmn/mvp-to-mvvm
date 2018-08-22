@@ -1,9 +1,9 @@
-package arnrmn.mvvmkoin.newspager.fragment
+package arnrmn.mvvmkoin.main
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import arnrmn.mvvmkoin.newslist.fragment.NewsListFragment
+import arnrmn.mvvmkoin.newslist.NewsListFragment
 
 class NewsPagerAdapter(manager: FragmentManager) : FragmentPagerAdapter(manager) {
 

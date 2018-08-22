@@ -1,11 +1,11 @@
-package arnrmn.mvvmkoin.newslist.fragment
+package arnrmn.mvvmkoin.newslist
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import arnrmn.mvvmkoin.R
-import arnrmn.mvvmkoin.newslist.fragment.list.ArticleClickListener
-import arnrmn.mvvmkoin.newslist.fragment.list.ArticlesAdapter
+import arnrmn.mvvmkoin.newslist.list.ArticleClickListener
+import arnrmn.mvvmkoin.newslist.list.ArticlesAdapter
 import arnrmn.mvvmkoin.utils.android.BaseFragment
 import arnrmn.mvvmkoin.utils.android.setVisiblility
 import arnrmn.mvvmkoin.utils.entity.Article

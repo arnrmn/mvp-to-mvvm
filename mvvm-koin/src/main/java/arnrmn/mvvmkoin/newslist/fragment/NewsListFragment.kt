@@ -4,18 +4,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import arnrmn.mvvmkoin.R
-import arnrmn.mvvmkoin.newsdetails.NewsDetailsActivity
 import arnrmn.mvvmkoin.newslist.fragment.list.ArticleClickListener
-import arnrmn.mvvmkoin.newslist.fragment.list.ArticlesAdapter
 import arnrmn.mvvmkoin.utils.android.BaseFragment
-import arnrmn.mvvmkoin.utils.android.setVisiblility
 import arnrmn.mvvmkoin.utils.entity.Article
-import kotlinx.android.synthetic.main.fragment_news_list.*
-import javax.inject.Inject
 
 class NewsListFragment : BaseFragment(), ArticleClickListener {
-    @Inject lateinit var adapter: ArticlesAdapter
-    private val viewModel by lazy { getViewModel<NewsListViewModel>() }
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_news_list
@@ -23,25 +16,25 @@ class NewsListFragment : BaseFragment(), ArticleClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recyclerView.adapter = adapter
-        viewModel.observeError().onResult(::showToast)
-        viewModel.observeDetails().onResult(::showDetails)
-        viewModel.observeProgress().onResult(::showProgress)
-        viewModel.observeArticles().onResult(::showArticles)
-        viewModel.observeNoArticles().onResult(::showNoArticles)
-        refreshLayout.setOnRefreshListener { viewModel.onRefresh() }
+//        recyclerView.adapter = adapter
+//        viewModel.observeError().onResult(::showToast)
+//        viewModel.observeDetails().onResult(::showDetails)
+//        viewModel.observeProgress().onResult(::showProgress)
+//        viewModel.observeArticles().onResult(::showArticles)
+//        viewModel.observeNoArticles().onResult(::showNoArticles)
+//        refreshLayout.setOnRefreshListener { viewModel.onRefresh() }
     }
 
     override fun onArticleClicked(article: Article) {
-        viewModel.onArticleClicked(article)
+//        viewModel.onArticleClicked(article)
     }
 
     private fun showArticles(articles: List<Article>) {
-        adapter.update(articles)
+//        adapter.update(articles)
     }
 
     private fun showNoArticles(show: Boolean) {
-        noItemsTextView.setVisiblility(show)
+//        noItemsTextView.setVisiblility(show)
     }
 
     private fun showToast(message: String?) {
@@ -49,11 +42,11 @@ class NewsListFragment : BaseFragment(), ArticleClickListener {
     }
 
     private fun showDetails(article: Article) {
-        NewsDetailsActivity.start(context, article)
+//        NewsDetailsActivity.start(context, article)
     }
 
     private fun showProgress(showProgress: Boolean) {
-        refreshLayout.isRefreshing = showProgress
+//        refreshLayout.isRefreshing = showProgress
     }
 
     companion object {

@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">MVVM App</string>
+    <string name="app_name">MVVM-KOIN App</string>
     <string name="news_list_no_articles">No articles :(</string>
 </resources>

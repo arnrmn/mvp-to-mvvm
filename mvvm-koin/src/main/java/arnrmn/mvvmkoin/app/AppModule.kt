@@ -1,26 +1,14 @@
 package arnrmn.mvvmkoin.app
 
-import android.content.Context
-import arnrmn.mvvmkoin.utils.dagger.IO
-import arnrmn.mvvmkoin.utils.dagger.UI
-import dagger.Binds
-import dagger.Module
-import dagger.Provides
-import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import org.koin.dsl.module.Module
+import org.koin.dsl.module.module
 
-@Module
-abstract class AppModule {
-    @Binds
-    abstract fun bindApplicationContext(app: MvvmApplication): Context
+const val UI = "ui"
+const val IO = "io"
 
-    @Module
-    companion object {
-        @JvmStatic @Provides @IO
-        fun provideIoScheduler(): Scheduler = Schedulers.io()
-
-        @JvmStatic @Provides @UI
-        fun provideUiScheduler(): Scheduler = AndroidSchedulers.mainThread()
-    }
+val appModule: Module = module {
+    single(IO) { Schedulers.io() }
+    single(UI) { AndroidSchedulers.mainThread() }
 }

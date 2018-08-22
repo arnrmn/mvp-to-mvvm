@@ -1,23 +1,10 @@
 package arnrmn.mvvmkoin.newspager.fragment
 
-import arnrmn.mvvmkoin.newslist.fragment.NewsListFragment
-import arnrmn.mvvmkoin.newslist.fragment.NewsListModule
-import arnrmn.mvvmkoin.utils.dagger.ChildFragmentScope
-import dagger.Module
-import dagger.Provides
-import dagger.android.ContributesAndroidInjector
+import android.support.v4.app.FragmentManager
+import org.koin.dsl.module.Module
+import org.koin.dsl.module.module
+import org.koin.dsl.path.moduleName
 
-@Module
-abstract class NewsPagerModule {
-    @ChildFragmentScope
-    @ContributesAndroidInjector(modules = [NewsListModule::class])
-    abstract fun contributeDetailsFragment(): NewsListFragment
-
-    @Module
-    companion object {
-        @JvmStatic @Provides
-        fun providePagerAdapter(fragment: NewsPagerFragment): NewsPagerAdapter {
-            return NewsPagerAdapter(fragment.childFragmentManager)
-        }
-    }
+val newsPagerModule: Module = module(NewsPagerFragment::class.moduleName) {
+    factory { (manager: FragmentManager) -> NewsPagerAdapter(manager) }
 }

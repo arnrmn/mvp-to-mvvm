@@ -1,10 +1,8 @@
 package arnrmn.mvvmkoin.utils.newsprovider
 
-import dagger.Binds
-import dagger.Module
+import org.koin.dsl.module.Module
+import org.koin.dsl.module.module
 
-@Module
-abstract class NewsProviderModule {
-    @Binds
-    abstract fun bindProvider(provider: BbcNewsProvider): NewsProvider
+val newsProviderModule: Module = module {
+    single { BbcNewsProvider(get()) as NewsProvider }
 }

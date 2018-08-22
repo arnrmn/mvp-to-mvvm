@@ -8,9 +8,8 @@ import arnrmn.mvvmkoin.utils.livedata.SingleLiveData
 import arnrmn.mvvmkoin.utils.newsprovider.NewsProvider
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
-import javax.inject.Inject
 
-class NewsListViewModel @Inject constructor(
+class NewsListViewModel(
         private val newsProvider: NewsProvider
 ) : ViewModel() {
     private val disposables = CompositeDisposable()

@@ -3,9 +3,8 @@ package arnrmn.mvvmkoin.utils.newsprovider
 import arnrmn.mvvmkoin.utils.entity.Article
 import arnrmn.mvvmkoin.utils.network.RestApi
 import io.reactivex.Single
-import javax.inject.Inject
 
-class BbcNewsProvider @Inject constructor(
+class BbcNewsProvider(
         private val restApi: RestApi
 ) : NewsProvider {
     override fun getNews(): Single<List<Article>> {

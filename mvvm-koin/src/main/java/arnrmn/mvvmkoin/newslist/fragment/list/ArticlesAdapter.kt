@@ -3,9 +3,8 @@ package arnrmn.mvvmkoin.newslist.fragment.list
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import arnrmn.mvvmkoin.utils.entity.Article
-import javax.inject.Inject
 
-class ArticlesAdapter @Inject constructor(
+class ArticlesAdapter(
         private val factory: ArticleViewHolderFactory
 ) : RecyclerView.Adapter<ArticleViewHolder>() {
     private val articles = mutableListOf<Article>()

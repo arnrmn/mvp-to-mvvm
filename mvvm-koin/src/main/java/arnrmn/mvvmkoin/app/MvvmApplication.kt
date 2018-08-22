@@ -1,6 +1,7 @@
 package arnrmn.mvvmkoin.app
 
 import android.app.Application
+import arnrmn.mvvmkoin.newslist.fragment.newsListModule
 import arnrmn.mvvmkoin.newspager.fragment.newsPagerModule
 import arnrmn.mvvmkoin.utils.network.networkModule
 import arnrmn.mvvmkoin.utils.newsprovider.newsProviderModule
@@ -10,6 +11,12 @@ class MvvmApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
-        startKoin(this, listOf(appModule, networkModule, newsProviderModule, newsPagerModule))
+        startKoin(this, listOf(
+                appModule,
+                networkModule,
+                newsProviderModule,
+                newsPagerModule,
+                newsListModule
+        ))
     }
 }

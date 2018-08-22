@@ -1,5 +1,6 @@
 package arnrmn.mvvmkoin.utils.network
 
+import arnrmn.mvvmkoin.app.IO
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import io.reactivex.Scheduler
 import okhttp3.OkHttpClient
@@ -12,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 val networkModule: Module = module {
     factory { createOkHttpClient() }
     factory { provideRestApi(get()) }
-    single { createRetrofit(get(), get()) }
+    single { createRetrofit(get(), get(IO)) }
 }
 
 private fun createOkHttpClient(): OkHttpClient {

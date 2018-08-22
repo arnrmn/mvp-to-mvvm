@@ -1,5 +1,7 @@
 package arnrmn.mvvmkoin.utils.android
 
+import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.v4.app.Fragment
@@ -17,9 +19,8 @@ abstract class BaseFragment : Fragment() {
         return layoutInflater.inflate(getLayoutId(), container, false)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+    protected fun <T> LiveData<T>.onResult(action: (T) -> Unit) {
+        observe(this@BaseFragment, Observer { data -> data?.let(action) })
     }
 
     @LayoutRes

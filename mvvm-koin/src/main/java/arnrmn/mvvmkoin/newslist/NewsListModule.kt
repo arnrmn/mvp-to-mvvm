@@ -9,18 +9,10 @@ import org.koin.dsl.module.module
 import org.koin.dsl.path.moduleName
 
 val newsListModule: Module = module(NewsListFragment::class.moduleName) {
-    factory { (listener: ArticleClickListener) ->
-        createArticleAdapter(
-                listener
-        )
-    }
+    factory { (listener: ArticleClickListener) -> createArticleAdapter(listener) }
     viewModel<NewsListViewModel>()
 }
 
 private fun createArticleAdapter(listener: ArticleClickListener): ArticlesAdapter {
-    return ArticlesAdapter(
-            ArticleViewHolderFactory(
-                    listener
-            )
-    )
+    return ArticlesAdapter(ArticleViewHolderFactory(listener))
 }

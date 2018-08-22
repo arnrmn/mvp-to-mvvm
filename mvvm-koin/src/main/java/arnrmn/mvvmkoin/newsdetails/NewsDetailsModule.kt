@@ -8,7 +8,7 @@ import org.koin.dsl.module.module
 import org.koin.dsl.path.moduleName
 
 val newsDetailsModule: Module = module(NewsDetailsFragment::class.moduleName) {
-    factory<ArticleDescriptionFormatter>()
-    factory<ArticleTitleFormatter>()
+    single<ArticleDescriptionFormatter>()
+    single<ArticleTitleFormatter>()
     viewModel<NewsDetailsViewModel>()
 }
